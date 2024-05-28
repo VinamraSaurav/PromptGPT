@@ -1,9 +1,5 @@
 {
   "projects": {
-    "staging": "promptgpt-1",
     "default": "promptgpt-1"
-  },
-  "targets": {},
-  "etags": {},
-  "dataconnectEmulatorConfig": {}
+  }
 }
