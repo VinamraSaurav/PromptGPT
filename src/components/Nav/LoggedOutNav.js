@@ -1,30 +1,13 @@
-"use client";
-import Link from "next/link";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import { ModeToggle } from "./ModeToggle";
+import React from 'react'
+import { ModeToggle } from '../ModeToggle'
+import Link from 'next/link'
 
-const Nav = () => {
-  const [toggleDropDown, setToggleDropDown] = useState(false);
-
+const LoggedOutNav = () => {
   return (
-    <nav className="flex justify-between items-center  w-full mb-16 pt-3">
-      <Link href="/" className="flex gap-2 flex-center">
-        <Image
-          src="/logo.svg"
-          height={30}
-          width={30}
-          alt="PromptGPT Logo"
-          className="object-contain"
-        />
-        <p className="max-sm:hidden font-satoshi font-semibold text-lg text-black dark:text-white tracking-wide">
-          PromptGPT
-        </p>
-      </Link>
-      <div className="sm:flex gap-3 md:gap-5">
+    <div>
+        <div className="flex gap-3">
         <ModeToggle />
 
-        <div className="sm:flex hidden gap-3 md:gap-4">
           <Link href="/login">
             <button
               className="rounded-full border border-black dark:border-white
@@ -44,11 +27,10 @@ const Nav = () => {
               Sign Up
             </button>
           </Link>
-        </div>
+        
       </div>
-      <div className="sm:hidden flex relative"></div>
-    </nav>
-  );
-};
+    </div>
+  )
+}
 
-export default Nav;
+export default LoggedOutNav

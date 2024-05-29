@@ -5,9 +5,15 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/utils/firebase";
+import { useRouter } from "next/navigation";
+
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState("password");
+  const [errorMessage,setErrorMessage]=useState(null);
+  const router=useRouter();
 
   const handleShowPassword = () => {
     if (showPassword === "password") {
@@ -29,12 +35,25 @@ const LoginPage = () => {
     initialValues,
     validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      signInWithEmailAndPassword(auth, values.email, values.password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    console.log(user);
+    router.push('/browse');
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    setErrorMessage(errorCode);
+  });
     },
   });
   return (
+    
     <div className="flex justify-center items-center h-full w-full">
-      <div className=" h-[400px] w-80 sm:w-96 mx-auto my-auto rounded-xl border border-gray-200 dark:border-white/15 bg-white/25 dark:bg-black/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5">
+      <div className=" h-[430px] w-80 sm:w-96 mx-auto my-auto rounded-xl border border-gray-200 dark:border-white/15 bg-white/25 dark:bg-black/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5">
         <div className="text-lg text-black dark:text-white font-bold text-center my-5 font-santoshi tracking-wide">
           Login
         </div>
@@ -79,6 +98,8 @@ const LoginPage = () => {
                 </div>
               ) : null}
             </div>
+            {<div className="text-center flex h-3 mb-2 justify-center mx-auto text-red-600 text-xs w-60">{errorMessage}</div>}
+
             <button type="submit" className="flex justify-center items-center mx-auto my-6 w-64 h-12 rounded-md bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 text-white text-md font-popins font-bold cursor-pointer">
               LOGIN
             </button>
@@ -94,6 +115,7 @@ const LoginPage = () => {
         </form>
       </div>
     </div>
+   
   );
 };
 

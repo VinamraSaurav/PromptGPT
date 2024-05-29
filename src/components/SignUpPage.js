@@ -7,9 +7,13 @@ import YupPassword from 'yup-password'
 import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
 YupPassword(yup) // extend yup
+import {createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/utils/firebase";
 
 const SignUpPage = () => {
     const [showPassword,setShowPassword]=useState("password");
+    const [errorMessage,setErrorMessage]=useState(null);
+
     const handleShowPassword=()=>{
         if(showPassword==='password'){
             setShowPassword('text');
@@ -33,13 +37,26 @@ const SignUpPage = () => {
     initialValues,
     validationSchema,
     onSubmit: values => {
-        alert(JSON.stringify(values, null, 2));
+        createUserWithEmailAndPassword(auth, values.email, values.password)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    console.log(user);
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    setErrorMessage(errorCode);
+    // ..
+  });
+
       },
   });
 
   return (
     <div className="flex justify-center items-center h-full w-full">
-      <div className=" h-[470px] w-80 sm:w-96 mx-auto my-auto rounded-xl border border-gray-200 dark:border-white/15 bg-white/25 dark:bg-black/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5">
+      <div className=" h-[510px] w-80 sm:w-96 mx-auto my-auto rounded-xl border border-gray-200 dark:border-white/15 bg-white/25 dark:bg-black/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5">
         <div className="text-lg text-black dark:text-white font-bold text-center my-5 font-santoshi tracking-wide">
           Sign Up
         </div>
@@ -81,7 +98,7 @@ const SignUpPage = () => {
                 </div>
               ) : null}
             </div>
-            <div className="flex flex-col items-center justify-center mb-6">
+            <div className="flex flex-col items-center justify-center mb-4">
               <div className="font-popins text-sm w-64">Password</div>
               <div className="flex w-64 justify-center items-center mx-auto">
               <input
@@ -97,11 +114,12 @@ const SignUpPage = () => {
               <div className="absolute right-[35px] sm:right-[67px] cursor-pointer" onClick={handleShowPassword}>{showPassword==='password'?<IoEye/>:<IoMdEyeOff/>}</div>
               </div>
                {formik.touched.password && formik.errors.password ? (
-                <div className="text-left text-red-600 text-xs w-60 mx-2">
+                <div className="text-left text-red-600 text-xs w-60 mx-2 h-2 mb-2">
                   *{formik.errors.password}!
                 </div>
               ) : null}
             </div>
+            {<div className="text-center flex h-3 mb-2 justify-center mx-auto text-red-600 text-xs w-60">{errorMessage}</div>}
             <button type="submit" className="flex justify-center items-center mx-auto my-6 w-64 h-12 rounded-md bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500  text-white text-md font-popins font-bold cursor-pointer">
               SIGN UP
             </button>

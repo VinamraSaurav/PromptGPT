@@ -1,7 +1,11 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/Nav";
+
 import { ThemeProvider } from "@/components/theme-provider"
+import StoreProvider from "./StoreProvider.js";
+import NavComplete from "@/components/Nav/NavComplete";
+
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,7 +17,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      
       <body className={inter.className}>
+<StoreProvider>
+     
       <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -24,11 +31,15 @@ export default function RootLayout({ children }) {
                 <div className='gradient'/>
             </div>
             <main className='relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6'>
-                <Nav/>
+         
+            <NavComplete/>
                 {children}
             </main>
             </ThemeProvider>
+    </StoreProvider>
       </body>
     </html>
+
+ 
   );
 }
