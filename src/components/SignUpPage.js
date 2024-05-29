@@ -9,10 +9,15 @@ import { IoMdEyeOff } from "react-icons/io";
 YupPassword(yup) // extend yup
 import {createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/utils/firebase";
+import { useToast } from "@/components/ui/use-toast"
+import { useRouter } from "next/navigation";
+
 
 const SignUpPage = () => {
     const [showPassword,setShowPassword]=useState("password");
     const [errorMessage,setErrorMessage]=useState(null);
+    const router=useRouter();
+
 
     const handleShowPassword=()=>{
         if(showPassword==='password'){
@@ -41,7 +46,8 @@ const SignUpPage = () => {
   .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
-    console.log(user);
+    // console.log(user);
+    router.push('/')
     // ...
   })
   .catch((error) => {

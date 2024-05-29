@@ -40,7 +40,7 @@ const LoginPage = () => {
     // Signed in 
     const user = userCredential.user;
     console.log(user);
-    router.push('/browse');
+    router.push('/');
     // ...
   })
   .catch((error) => {

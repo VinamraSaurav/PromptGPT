@@ -1,3 +1,4 @@
+'use client'
 import UserAvatar from "../Avatar/UserAvatar"
 
 import {
@@ -15,8 +16,24 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Button } from "../ui/button"
+import { signOut } from "firebase/auth"
+import { auth } from "@/utils/firebase"
+import { useRouter } from "next/navigation"
+
 
 export function UserMenu() {
+
+
+    const router=useRouter();
+    const handleLogOut=()=>{
+        signOut(auth).then(() => {
+            // Sign-out successful.
+
+            router.push('/');
+          }).catch((error) => {
+            // An error happened.
+          });
+    }
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -68,7 +85,7 @@ export function UserMenu() {
         <DropdownMenuItem>Support</DropdownMenuItem>
         <DropdownMenuItem disabled>API</DropdownMenuItem> */}
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={handleLogOut} className='cursor-pointer'>
           Log out
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
