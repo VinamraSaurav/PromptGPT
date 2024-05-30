@@ -14,7 +14,7 @@ const Body = () => {
         <h1 className="mt-5 text-5xl font-extrabold leading-[1.15] text-black dark:text-white sm:text-6xl text-center">
           Discover & Share
           <br className="max-md:hidden" />
-          <span className=" bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent text-center font-popins font-bold backdrop:blur-sm ">
+          <span className=" bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent text-center font-popins backdrop:blur-sm ">
             {" "}
             AI-Powered Prompts
           </span>
