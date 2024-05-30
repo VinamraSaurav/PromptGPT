@@ -35,7 +35,7 @@
       --radius: 0.5rem;
 
       --main-gradient:#fafafa;
-      --opacity: 0.27;
+      --opacity: 0.28;
       --invert:1;
 
     }
@@ -70,7 +70,7 @@
       --ring: 0 0% 83.1%;
 
       --main-gradient: #000000;
-      --opacity:0.24;
+      --opacity:0.21;
       --invert:0;
     }
   }
