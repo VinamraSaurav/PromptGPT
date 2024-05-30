@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-
+import { AiFillOpenAI } from "react-icons/ai";
 
 
 
@@ -19,6 +19,7 @@ const Nav = () => {
           alt="PromptGPT Logo"
           className="object-contain"
         />
+        {/* <AiFillOpenAI className="text-4xl text-[#ff5722]"/> */}
         <p className="max-sm:hidden font-satoshi font-semibold text-lg text-black dark:text-white tracking-wide">
           PromptGPT
         </p>
