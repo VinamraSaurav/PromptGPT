@@ -34,7 +34,9 @@
 
       --radius: 0.5rem;
 
-      --main-gradient:#fafafa
+      --main-gradient:#fafafa;
+      --opacity: 0.24;
+      --invert:1;
 
     }
 
@@ -67,7 +69,9 @@
       --input: 0 0% 14.9%;
       --ring: 0 0% 83.1%;
 
-      --main-gradient: #000000
+      --main-gradient: #000000;
+      --opacity:0.3;
+      --invert:0;
     }
   }
 
@@ -103,18 +107,18 @@
 
 .main:after {
   content: "";
-  background-image: url("/assets/images/grid.svg");
+  /* background-image: url("/assets/images/grid.svg"); */
   z-index: 1;
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   opacity: 0.4;
-  filter: invert(1);
+  filter: invert(var(--invert));
 }
 
 .gradient {
-  height: fit-content;
+  height: 100px;
   z-index: 3;
   width: 100%;
   max-width: 640px;
@@ -132,10 +136,10 @@
   position: absolute;
   content: "";
   width: 100%;
-  height: 100%;
-  filter: blur(100px) saturate(150%);
-  top: 80px;
-  opacity: 0.15;
+  height: 380px;
+  filter: blur(60px) saturate(150%);
+  top: 250px;
+  opacity: var(--opacity);
 }
 
 @media screen and (max-width: 640px) {
