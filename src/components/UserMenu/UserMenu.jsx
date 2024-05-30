@@ -40,7 +40,7 @@ export function UserMenu() {
         
         <Button variant='ghost' size='icon'><UserAvatar/></Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
+      <DropdownMenuContent className="w-40">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         {/* <DropdownMenuSeparator /> */}
         {/* <DropdownMenuGroup>
@@ -87,7 +87,7 @@ export function UserMenu() {
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleLogOut} className='cursor-pointer'>
           Log out
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+          {/* <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut> */}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
