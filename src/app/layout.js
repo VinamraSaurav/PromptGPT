@@ -5,6 +5,9 @@ import { ThemeProvider } from "@/components/theme-provider"
 import StoreProvider from "./StoreProvider.js";
 import NavComplete from "@/components/Nav/NavComplete";
 import { Toaster } from "@/components/ui/toaster"
+import EmailVerificationButton from "@/components/EmailVerificationButton/EmailVerificationButton";
+
+
 
 
 
@@ -28,15 +31,17 @@ export default function RootLayout({ children }) {
             enableSystem
             disableTransitionOnChange
           >
+         {/* <EmailVerificationButton/> */}
       <div className='main'>
                 <div className='gradient'/>
             </div>
             <main className='relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6'>
-         
             <NavComplete/>
                 {children}
-                <Toaster/>
+                
             </main>
+                <Toaster/>
+          
             </ThemeProvider>
     </StoreProvider>
       </body>

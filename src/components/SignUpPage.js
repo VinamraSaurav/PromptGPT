@@ -23,7 +23,8 @@ const SignUpPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   // const [sentEmail, setSentEmail] = useState();
-  const { toast } = useToast();
+  
+  const { toast } = useToast()
 
   const handleShowPassword = () => {
     if (showPassword === "password") {
@@ -59,31 +60,22 @@ const SignUpPage = () => {
           updateProfile(user, {
             displayName: values.name,
           })
-            .then(() => {
-              const { uid, displayName, email } = auth.currentUser;
-              dispatch(
-                addUser({ uid: uid, displayName: displayName, email: email })
-              );
+          .then(() => {
 
-              sendEmailVerification(auth.currentUser).then(() => {
-                // Email verification sent!
-                // setSentEmail(true);
-                
-                  toast({
-                    title: "Verify your Email",
-                    description: "Verification email sent.",
-                  })
-                 
-                // ...
-              });
-            })
-            .catch((error) => {
-              // An error occurred
-              setErrorMessage(error.code);
-              // ...
-            });
+            const { uid, displayName, email, emailVerified } = auth.currentUser;
+                dispatch(
+                  addUser({ uid: uid, displayName: displayName, email: email, emailVerified:emailVerified })
+                );
+                router.push('/')
+            
+          })
+          .catch((error) => {
+            // An error occurred
+            setErrorMessage(error.code);
+          });
+          
 
-          router.push("/");
+          
           // ...
         })
         .catch((error) => {

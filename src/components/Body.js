@@ -1,4 +1,5 @@
 'use client'
+
 import React from 'react'
 
 
@@ -6,10 +7,9 @@ const Body = () => {
 
 
 
-
   return (
     <div>
-        
+
           <section className="w-full flex-center flex-col lg:mt-8">
         <h1 className="mt-5 text-5xl font-extrabold leading-[1.15] text-black dark:text-white sm:text-6xl text-center">
           Discover & Share
@@ -24,6 +24,7 @@ const Body = () => {
           discover, create and share creative prompts
           
         </p>
+        
       </section>
  
     </div>

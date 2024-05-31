@@ -26,6 +26,6 @@ measurementId: process.env.NEXT_PUBLIC_FIREBASE_MESUREMENT_ID,
 const firebaseApp = initializeApp(config);
 
 export const auth = getAuth();
-export default firebaseApp
+export default firebaseApp;
 
 // const analytics = getAnalytics(app);

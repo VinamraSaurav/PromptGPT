@@ -14,8 +14,8 @@ const DataSetter = () => {
         if (user) {
           // User is signed in, see docs for a list of available properties
           // https://firebase.google.com/docs/reference/js/auth.user
-          const {uid,displayName,email} = user;
-          dispatch(addUser({uid:uid,displayName:displayName,email:email}));
+          const {uid,displayName,email,emailVerified} = user;
+          dispatch(addUser({uid:uid,displayName:displayName,email:email,emailVerified:emailVerified}));
   
           // ...
         } else {

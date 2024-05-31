@@ -9,7 +9,7 @@ const NavComplete = () => {
     const user=useAppSelector((store)=>(store.user));
     
   return (
-    <div className="flex justify-between items-center  w-full mb-24 pt-3 mt-3 ">
+    <div className="flex justify-between items-center  w-full mb-16 pt-3 mt-3 ">
         <Nav/>
         {user===null?<LoggedOutNav/>:<LoggedInNav/>}
     </div>
