@@ -38,21 +38,19 @@ export function UserMenu() {
     
 
 
-    const handleLogOut=()=>{
-        
-        toast.promise(
-            signOut(auth).then(() => {
-                // Sign-out successful.
-                
-                // router.push('/');
-            }),
-              {
-                loading: 'Signing Out...',
-                success: 'You have been successfully signed out.',
-                error: 'Something went wrong.',
-              }
-        )
+    const handleLogOut=async()=>{
+        try{
+        await signOut(auth);
+        toast.success('You have been successfully signed out.');
         router.push('/')
+                
+        }
+        catch(error){
+            toast.error("Something went wrong.")
+        } ;     // router.push('/');
+          
+        
+        
         
         
     }
@@ -173,6 +171,7 @@ const renderer = ({ hours, minutes, seconds }) => {
 
   return (
     <DropdownMenu>
+        <Toaster position="bottom-right" reverseOrder={false}/>
         <Toaster position="bottom-right" reverseOrder={false}/>
       <DropdownMenuTrigger asChild>
         {user.emailVerified? <Button variant='ghost' size='icon'><UserAvatar/></Button>:

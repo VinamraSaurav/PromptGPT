@@ -16,6 +16,8 @@ import { auth } from "@/utils/firebase";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/lib/hooks";
+import toast, { Toaster } from "react-hot-toast";
+import { TiTick } from "react-icons/ti";
 
 const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState("password");
@@ -24,8 +26,6 @@ const SignUpPage = () => {
   const dispatch = useAppDispatch();
   // const [sentEmail, setSentEmail] = useState();
   
-  const { toast } = useToast()
-
   const handleShowPassword = () => {
     if (showPassword === "password") {
       setShowPassword("text");
@@ -53,42 +53,70 @@ const SignUpPage = () => {
     validationSchema,
     onSubmit: (values) => {
       createUserWithEmailAndPassword(auth, values.email, values.password)
-        .then((userCredential) => {
-          // Signed up
-          const user = userCredential.user;
-          // console.log(user);
-          updateProfile(user, {
-            displayName: values.name,
-          })
-          .then(() => {
+  .then(async (userCredential) => {
+    const user = userCredential.user;
+    try {
+      await updateProfile(user, { displayName: values.name });
+      // console.log('Profile updated successfully'); // Log for verification
+      await sendEmailVerification(auth.currentUser)
+      toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? 'animate-enter' : 'animate-leave'
+          } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
+        >
+          <div className="flex-1 w-0 p-4">
+            <div className="flex items-start">
+              <div className="flex-shrink-0 pt-0.5">
+                <TiTick
+                  className="h-10 w-10 rounded-full bg-green-400 text-white"
+                  
+                />
+              </div>
+              <div className="ml-3 flex-1">
+                <p className="text-sm font-medium text-gray-900">
+                  Please verify your email.
+                </p>
+                <p className="mt-1 text-sm text-gray-500">
+                  Verification link sent on your registered mail.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="flex border-l border-gray-200">
+            <button
+              onClick={() => toast.dismiss(t.id)}
+              className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-orange-600 hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      ))
+      router.push('/');
+      // const { uid, displayName, email, emailVerified } = auth.currentUser;
+      // dispatch(
+      //   addUser({ uid: uid, displayName: displayName, email: email, emailVerified: emailVerified })
+      // );
 
-            const { uid, displayName, email, emailVerified } = auth.currentUser;
-                dispatch(
-                  addUser({ uid: uid, displayName: displayName, email: email, emailVerified:emailVerified })
-                );
-                router.push('/')
-            
-          })
-          .catch((error) => {
-            // An error occurred
-            setErrorMessage(error.code);
-          });
-          
-
-          
-          // ...
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrorMessage(errorCode);
-          // ..
-        });
-    },
+    } catch (error) {
+      console.error('Error updating profile:', error);
+      // Handle errors here (e.g., display an error message to the user)
+    }
+  })
+  .catch((error) => {
+    console.error('Error creating user:', error);
+    // Handle errors here (e.g., display an error message to the user)
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    setErrorMessage(errorCode);
   });
-
+      },
+    });
+    
   return (
     <div className="flex justify-center items-center h-full w-full">
+      <Toaster/>
       <div className=" h-[510px] w-80 sm:w-96 mx-auto my-auto rounded-xl border border-gray-200 dark:border-white/15 bg-white/25 dark:bg-black/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5">
         <div className="text-lg text-black dark:text-white font-bold text-center my-5 font-santoshi tracking-wide">
           Sign Up

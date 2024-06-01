@@ -5,8 +5,6 @@ import { ThemeProvider } from "@/components/theme-provider"
 import StoreProvider from "./StoreProvider.js";
 import NavComplete from "@/components/Nav/NavComplete";
 import { Toaster } from "@/components/ui/toaster"
-import EmailVerificationButton from "@/components/EmailVerificationButton/EmailVerificationButton";
-
 
 
 
