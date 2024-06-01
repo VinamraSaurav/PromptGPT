@@ -53,7 +53,7 @@ const LoginPage = () => {
   return (
     
     <div className="flex justify-center items-center h-full w-full">
-      <div className=" h-[430px] w-80 sm:w-96 mx-auto my-auto rounded-xl border border-gray-200 dark:border-white/15 bg-white/25 dark:bg-black/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5">
+      <div className=" h-[440px] w-80 sm:w-96 mx-auto my-auto rounded-xl border border-gray-200 dark:border-white/15 bg-white/25 dark:bg-black/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5">
         <div className="text-lg text-black dark:text-white font-bold text-center my-5 font-santoshi tracking-wide">
           Login
         </div>
@@ -75,9 +75,9 @@ const LoginPage = () => {
                 <div className="text-left text-red-600 text-xs w-60 mx-2">
                   *{formik.errors.email}!
                 </div>
-              ) : null}
+              ) : <div className="w-64 h-3"/>}
             </div>
-            <div className="flex flex-col items-center justify-center mb-6">
+            <div className="flex flex-col items-center justify-center">
               <div className="font-popins text-sm w-64">Password</div>
               <div  className="flex w-64 justify-center items-center mx-auto">
               <input
@@ -88,15 +88,16 @@ const LoginPage = () => {
                 onChange={formik.handleChange}
                 value={formik.values.password}
                 onBlur={formik.handleBlur}
-                className="w-64 py-2 px-1 m-1 bg-transparent text-sm font-popins border-b-2 border-black dark:border-white/30 outline-none"
+                className="w-64 py-2 px-1 mt-1 bg-transparent text-sm font-popins border-b-2 border-black dark:border-white/30 outline-none"
               ></input>
               <div className="absolute right-[35px] sm:right-[67px] cursor-pointer" onClick={handleShowPassword}>{showPassword==='password'?<IoEye/>:<IoMdEyeOff/>}</div>
               </div>
+              <Link href='/resetPassword'><div className="flex justify-end w-64 text-xs mr-2 mt-1">Forgot Password?</div></Link>
               {formik.touched.password && formik.errors.password ? (
                 <div className="text-left text-red-600 text-xs w-60 mx-2">
                   *{formik.errors.password}!
                 </div>
-              ) : null}
+              ) : <div className="w-64 h-3"/>}
             </div>
             {<div className="text-center flex h-3 mb-2 justify-center mx-auto text-red-600 text-xs w-60">{errorMessage}</div>}
 

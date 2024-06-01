@@ -41,7 +41,10 @@ export function UserMenu() {
     const handleLogOut=async()=>{
         try{
         await signOut(auth);
-        toast.success('You have been successfully signed out.');
+        useToast().toast({
+            description:'Signed out successfully !',
+        })
+        // toast.success();
         router.push('/')
                 
         }

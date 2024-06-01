@@ -1,4 +1,4 @@
-import LoginPage from '@/components/LoginPage'
+import LoginPage from '@/components/Auth/LoginPage'
 import Nav from '@/components/Nav/Nav'
 import DataSetter from '@/lib/DataSetter'
 import React from 'react'
