@@ -16,9 +16,8 @@ import { auth } from "@/utils/firebase";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/lib/hooks";
-// import toast, { Toaster } from "react-hot-toast";
 import { TiTick } from "react-icons/ti";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 
 const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState("password");

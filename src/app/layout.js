@@ -5,6 +5,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 import StoreProvider from "./StoreProvider.js";
 import NavComplete from "@/components/Nav/NavComplete";
 import { Toaster } from "@/components/ui/toaster"
+import DataSetter from "@/lib/DataSetter";
+// import { Toaster } from "react-hot-toast";
 
 
 
@@ -22,7 +24,7 @@ export default function RootLayout({ children }) {
       
       <body className={inter.className}>
 <StoreProvider>
-     
+     <DataSetter/>
       <ThemeProvider
             attribute="class"
             defaultTheme="system"

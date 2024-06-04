@@ -38,25 +38,15 @@ export function UserMenu() {
     
 
 
-    const handleLogOut=async()=>{
-        try{
-        await signOut(auth);
-        useToast().toast({
-            description:'Signed out successfully !',
-        })
-        // toast.success();
-        router.push('/')
-                
+    const handleLogOut = async () => {
+        try {
+          await signOut(auth);
+         ; // Delay by 500 milliseconds (adjust as needed)
+          router.push('/');
+        } catch (error) {
+          // toast.error("Something went wrong.");
         }
-        catch(error){
-            toast.error("Something went wrong.")
-        } ;     // router.push('/');
-          
-        
-        
-        
-        
-    }
+    };
 
     const handleVerification = () => {
         
@@ -142,7 +132,7 @@ const renderer = ({ hours, minutes, seconds }) => {
     useEffect(() => {
 
         localStorage.setItem("DisabledValue",JSON.stringify(isDisabled));
-        console.log('Local storage updated:', isDisabled);
+        // console.log('Local storage updated:', isDisabled);
 
       const savedDate = getLocalStorageValue("end_date");
       if (savedDate != null && !isNaN(savedDate)) {
@@ -174,8 +164,7 @@ const renderer = ({ hours, minutes, seconds }) => {
 
   return (
     <DropdownMenu>
-        <Toaster position="bottom-right" reverseOrder={false}/>
-        <Toaster position="bottom-right" reverseOrder={false}/>
+        <Toaster position="bottom-right" reverseOrder={false}/> 
       <DropdownMenuTrigger asChild>
         {user.emailVerified? <Button variant='ghost' size='icon'><UserAvatar/></Button>:
         <Button variant='ghost' size='icon'><div className="relative"><UserAvatar/><div className="absolute top-0 right-0 h-3 w-3 animate-ping rounded-full bg-orange-300 "></div><div className="h-3 w-3 absolute right-0 top-0 bg-orange-300 rounded-full "></div></div></Button>}

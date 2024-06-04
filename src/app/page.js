@@ -10,7 +10,7 @@ export default function Home() {
 
     <div>
       {/* <NavComplete c/> */}
-      <DataSetter/>
+      {/* <DataSetter/> */}
     <Body/>
     </div>
 
