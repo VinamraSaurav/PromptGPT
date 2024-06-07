@@ -335,3 +335,34 @@
     transform: scale(1.2, 1);
   }
 }
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 4px;
+  display:none;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #12456f70; 
+  border-radius:10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ffffff20; 
+  border-radius:10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #07365b; 
+  cursor:grab;
+}
+::-webkit-scrollbar-thumb:active{
+  background: #07365b; 
+  cursor:grabbing;
+}

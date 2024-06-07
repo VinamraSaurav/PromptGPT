@@ -10,7 +10,7 @@ const Nav = () => {
 
   return (
     
-    <nav className="flex justify-start ">
+    <nav className="flex justify-start relative z-10">
       <Link href="/" className="flex gap-2 justify-center items-center">
         <Image
           src="/logo.svg"
