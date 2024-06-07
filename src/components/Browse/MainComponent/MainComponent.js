@@ -13,7 +13,7 @@ const MainComponent = () => {
 
    
    if(!movie) return <Loader/>;
-    const mainMovie=movie[3];
+    const mainMovie=movie[0];
     // console.log(mainMovie.id);
     
 

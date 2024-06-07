@@ -27,6 +27,7 @@ import { useState, useEffect } from "react";
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useToast } from "../ui/use-toast"
+import Link from "next/link"
 
 
 export function UserMenu() {
@@ -204,7 +205,7 @@ const renderer = ({ hours, minutes, seconds }) => {
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub> */}
-          {user.emailVerified===false && <div>
+          {user.emailVerified===false ? <div>
       <Countdown
         date={data.date + data.delay}
         renderer={renderer}
@@ -230,8 +231,11 @@ const renderer = ({ hours, minutes, seconds }) => {
       >
 
       </Countdown>
+    </div>:<Link href={'/browse'}><DropdownMenuItem>
+            Browse Movies
+            {/* <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut> */}
+          </DropdownMenuItem></Link>}
         <DropdownMenuSeparator />
-    </div>}
           
         {/* //   :<DropdownMenuItem className='cursor-pointer' onClick={handleVerification}>
         //     Verify  Email
