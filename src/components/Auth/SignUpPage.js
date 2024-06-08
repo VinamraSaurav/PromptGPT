@@ -12,7 +12,7 @@ import {
   sendEmailVerification,
   updateProfile,
 } from "firebase/auth";
-import { actionCodeSettings, auth } from "@/utils/firebase";
+import { auth } from "@/utils/firebase";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/lib/hooks";
@@ -59,7 +59,8 @@ const SignUpPage = () => {
     try {
       await updateProfile(user, { displayName: values.name });
       // console.log('Profile updated successfully'); // Log for verification
-      await sendEmailVerification(auth.currentUser, actionCodeSettings);
+      await sendEmailVerification(auth.currentUser);
+
       toast({
         variant:'destructive',
         title:'Please verify your email',

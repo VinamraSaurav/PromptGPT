@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Button } from "../ui/button"
 import { sendEmailVerification, signOut } from "firebase/auth"
-import { actionCodeSettings, auth } from "@/utils/firebase"
+import { auth } from "@/utils/firebase"
 import { useRouter } from "next/navigation"
 import { useAppSelector } from "@/lib/hooks"
 // import { useState } from "react"
@@ -52,7 +52,7 @@ export function UserMenu() {
     const handleVerification = () => {
         
         toast.promise(
-            sendEmailVerification(auth.currentUser, actionCodeSettings).then(
+            sendEmailVerification(auth.currentUser).then(
                 () => {
 
                   
