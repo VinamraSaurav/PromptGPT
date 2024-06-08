@@ -59,7 +59,7 @@ const SignUpPage = () => {
     try {
       await updateProfile(user, { displayName: values.name });
       // console.log('Profile updated successfully'); // Log for verification
-      await sendEmailVerification(auth.currentUser)
+      await sendEmailVerification(auth.currentUser);
       toast({
         variant:'destructive',
         title:'Please verify your email',

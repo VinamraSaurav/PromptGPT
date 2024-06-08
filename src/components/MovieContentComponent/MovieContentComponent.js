@@ -7,6 +7,7 @@ import Loader from '../Loader'
 
 
 const MovieContentComponent = ({movieId}) => {
+  // console.log(movieId);
 useMovieContent(movieId)
 const mainConetent=useAppSelector((store)=>store.movies.mainConetent);
 const relatedContent=useAppSelector((store)=>store.movies.relatedContent);
@@ -16,7 +17,7 @@ if(!mainConetent || !relatedContent) return <Loader/>;
   return (
     <div>
         <MainMovieComponent data={mainConetent}/>
-        <RelatedContent movieId={movieId[0]} data={relatedContent}/>
+        <RelatedContent type={movieId[0]} movieId={movieId[1]} data={relatedContent}/>
     </div>
   )
 }

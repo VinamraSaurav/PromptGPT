@@ -6,7 +6,7 @@ import { useAppDispatch } from "@/lib/hooks";
 import { addMainContent } from "@/store/movieSlice";
 import Link from "next/link";
 
-const RelatedContent = ({ movieId, data }) => {
+const RelatedContent = ({ movieId, data, type }) => {
   const diapatch = useAppDispatch();
   const router = useRouter();
   return (
@@ -16,7 +16,7 @@ const RelatedContent = ({ movieId, data }) => {
       </div>
       <div className="flex flex-wrap justify-center items-start max-w-[1500px] mx-auto m-2">
         {data.map((video) => (
-          <Link href={"/browse/" + movieId + "/" + video.id} key={video.id}>
+          <Link href={"/browse/" +type+'/'+ movieId + "/" + video.id} key={video.id}>
             <RelatedMovieCard
               
               videoData={video}

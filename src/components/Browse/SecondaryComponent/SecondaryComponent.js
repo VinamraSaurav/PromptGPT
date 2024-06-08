@@ -8,13 +8,13 @@ const SecondaryComponent = () => {
 
   return (
     <div className='md:-mt-30 lg:-mt-80 xl:-mt-[470px]  -mt-32  relative z-10'>
-        <MovieList data={movies.trending} title={'Trending'}/>
-        <MovieList data={movies.upcoming} title={'Upcoming'}/>
-        <MovieList data={movies.nowPlaying} title={'Now Playing'}/>
-        <MovieList data={movies.topRated} title={'Top Rated'}/>
-        <MovieList data={movies.popular} title={'Popular'}/>
+        <MovieList data={movies.trending} title={'Trending'} type={'movie'}/>
+        <MovieList data={movies.upcoming} title={'Upcoming'} type={'movie'}/>
+        <MovieList data={movies.nowPlaying} title={'Now Playing'} type={'movie'}/>
+        <MovieList data={movies.topRated} title={'Top Rated'} type={'movie'}/>
+        <MovieList data={movies.popular} title={'Popular'} type={'movie'}/>
         {/* <div>TV Shows</div> */}
-        <MovieList data={movies.tvShows} title={'Top TV Shows'}/>
+        {/* <MovieList data={movies.tvShows} title={'Top TV Shows'} type={'tv'}/> */}
 
 
     </div>
