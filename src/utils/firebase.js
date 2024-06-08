@@ -29,7 +29,7 @@ export const auth = getAuth();
 export default firebaseApp;
 
 export const actionCodeSettings = {
-  url: 'https://www.'+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN+'/?email=' + auth.currentUser.email,
+  url: 'https://www.'+process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN+'/?email=' + auth.currentUser.email,
   handleCodeInApp: false,
 };
 
