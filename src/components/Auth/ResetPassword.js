@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/utils/firebase";
+import { actionCodeSettings, auth } from "@/utils/firebase";
 import { useRouter } from "next/navigation";
 import { toast, useToast } from "../ui/use-toast";
 
@@ -34,7 +34,7 @@ const ResetPassword = () => {
     validationSchema,
     onSubmit: async (values) => {
         try{
-            await sendPasswordResetEmail(auth, values.email);
+            await sendPasswordResetEmail(auth, values.email, actionCodeSettings);
             toast({
                 title:'Reset link sent !',
                 description:'Password reset link sent on your registered mail.'
